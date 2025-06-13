@@ -6,10 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/health")
 public class HazavaoController {
 
   private final String apiKey = System.getenv("OPENAI_API_KEY");
+
+  @GetMapping
+  public String health() {
+    return "OK";
+  }
 
   @GetMapping("/hazavao")
   public String getDefinition(@RequestParam String teny) {
